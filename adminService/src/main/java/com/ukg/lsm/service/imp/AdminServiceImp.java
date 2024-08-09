@@ -20,9 +20,9 @@ public class AdminServiceImp implements AdminService {
     @Override
     @Transactional
     public AdminEntity createAdmin(AdminEntity admin) throws InvalidRequestException {
-        if(adminRepo.existsByEmail(admin.getEmail())){
-            throw new InvalidRequestException("Email already exists");
-        }
+//        if(adminRepo.existsByEmail(admin.getEmail())){
+//            throw new InvalidRequestException("Email already exists");
+//        }
         try{
             return adminRepo.save(admin);
         } catch (DataIntegrityViolationException e) {
