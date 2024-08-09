@@ -3,8 +3,11 @@ package com.ukg.lsm.service.imp;
 import com.ukg.lsm.entity.AdminEntity;
 import com.ukg.lsm.repository.AdminRepository;
 import com.ukg.lsm.service.AdminService;
+import com.ukg.lsm.utils.InvalidRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -15,8 +18,17 @@ public class AdminServiceImp implements AdminService {
     private AdminRepository adminRepo;
 
     @Override
-    public AdminEntity createAdmin(AdminEntity admin){
-        return adminRepo.save(admin);
+    @Transactional
+    public AdminEntity createAdmin(AdminEntity admin) throws InvalidRequestException {
+        if(adminRepo.existsByEmail(admin.getEmail())){
+            throw new InvalidRequestException("Email already exists");
+        }
+        try{
+            return adminRepo.save(admin);
+        } catch (DataIntegrityViolationException e) {
+            throw new InvalidRequestException("Email already exists");
+        }
+
     }
 
     @Override

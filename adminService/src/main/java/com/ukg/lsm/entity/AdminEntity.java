@@ -1,5 +1,6 @@
 package com.ukg.lsm.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -18,6 +19,8 @@ public class AdminEntity {
 
     private String firstName;
     private String lastName;
+
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
     private String password;
 

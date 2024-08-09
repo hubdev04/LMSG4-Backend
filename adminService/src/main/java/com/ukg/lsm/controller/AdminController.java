@@ -2,6 +2,7 @@ package com.ukg.lsm.controller;
 
 import com.ukg.lsm.entity.AdminEntity;
 import com.ukg.lsm.service.AdminService;
+import com.ukg.lsm.utils.InvalidRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,8 +24,8 @@ public class AdminController {
         return ResponseEntity.status(HttpStatus.OK).body(adminService.getAdmins());
     }
     @PostMapping
-    private ResponseEntity<AdminEntity> postAdmin(@RequestBody AdminEntity admin){
-        AdminEntity adminRes = adminService.createAdmin(admin);
-        return new ResponseEntity<>(adminRes, HttpStatus.CREATED);
+    private ResponseEntity<AdminEntity> postAdmin(@RequestBody AdminEntity admin) throws InvalidRequestException {
+//        AdminEntity adminRes = adminService.createAdmin(admin);
+        return ResponseEntity.status(HttpStatus.CREATED).body(adminService.createAdmin(admin));
     }
 }
