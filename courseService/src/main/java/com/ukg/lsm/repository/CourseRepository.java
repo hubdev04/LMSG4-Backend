@@ -11,7 +11,7 @@ public interface CourseRepository extends JpaRepository<CourseEntity,Long> {
    Optional<List<CourseEntity>> findByIsActiveTrueAndIsDeletedFalseAndApprovalStatus(CourseApprovalStatus CourseApprovalStatus);
     Optional<CourseEntity> findByIdAndIsActiveTrueAndIsDeletedFalseAndApprovalStatus(Long id, CourseApprovalStatus approvalStatus);
     Optional<List<CourseEntity>> findByApprovalStatusAndIsDeletedFalseAndIsActiveTrue(CourseApprovalStatus approvalStatus);
-    Optional<List<CourseEntity>> findById(String courseId);
+    Optional<CourseEntity> findById(Long courseId);
     Optional<List<CourseEntity>> findByIdIn(List<Long> courseIds);
 
 }

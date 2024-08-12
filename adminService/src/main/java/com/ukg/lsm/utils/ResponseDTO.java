@@ -1,0 +1,19 @@
+package com.ukg.lsm.utils;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+@Builder
+@Data
+@AllArgsConstructor(staticName = "build")
+public class ResponseDTO {
+    private boolean success;
+    private String message;
+    private LocalDateTime completionTimeStamp;
+    private Object results;
+    private List<ErrorDetail> errorDetails;
+}

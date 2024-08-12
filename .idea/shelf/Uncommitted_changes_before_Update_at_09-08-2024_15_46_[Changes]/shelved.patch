@@ -1,0 +1,374 @@
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(date 1723198345249)
++++ b/.idea/vcs.xml	(date 1723198345249)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: adminService/src/main/java/com/ukg/lsm/service/AdminService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/adminService/src/main/java/com/ukg/lsm/service/AdminService.java b/adminService/src/main/java/com/ukg/lsm/service/AdminService.java
+new file mode 100644
+--- /dev/null	(date 1723198345272)
++++ b/adminService/src/main/java/com/ukg/lsm/service/AdminService.java	(date 1723198345272)
+@@ -0,0 +1,12 @@
++package com.ukg.lsm.service;
++
++import com.ukg.lsm.entity.AdminEntity;
++import org.springframework.stereotype.Service;
++
++import java.util.List;
++//@Service
++public interface AdminService {
++    List<AdminEntity> getAdmins();
++    AdminEntity createAdmin(AdminEntity admin);
++
++}
+Index: adminService/src/main/java/com/ukg/lsm/service/imp/AdminServiceImp.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/adminService/src/main/java/com/ukg/lsm/service/imp/AdminServiceImp.java b/adminService/src/main/java/com/ukg/lsm/service/imp/AdminServiceImp.java
+new file mode 100644
+--- /dev/null	(date 1723198345275)
++++ b/adminService/src/main/java/com/ukg/lsm/service/imp/AdminServiceImp.java	(date 1723198345275)
+@@ -0,0 +1,26 @@
++package com.ukg.lsm.service.imp;
++
++import com.ukg.lsm.entity.AdminEntity;
++import com.ukg.lsm.repository.AdminRepository;
++import com.ukg.lsm.service.AdminService;
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.stereotype.Service;
++
++import java.util.List;
++
++@Service
++public class AdminServiceImp implements AdminService {
++
++    @Autowired
++    private AdminRepository adminRepo;
++
++    @Override
++    public AdminEntity createAdmin(AdminEntity admin){
++        return adminRepo.save(admin);
++    }
++
++    @Override
++    public List<AdminEntity> getAdmins() {
++        return adminRepo.findAll();
++    }
++}
+Index: adminService/src/main/java/com/ukg/lsm/repository/UserRepository.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/adminService/src/main/java/com/ukg/lsm/repository/UserRepository.java b/adminService/src/main/java/com/ukg/lsm/repository/AdminRepository.java
+rename from adminService/src/main/java/com/ukg/lsm/repository/UserRepository.java
+rename to adminService/src/main/java/com/ukg/lsm/repository/AdminRepository.java
+--- a/adminService/src/main/java/com/ukg/lsm/repository/UserRepository.java	(revision d716a991053be40d59ecec80d334f4ef13ee8b9f)
++++ b/adminService/src/main/java/com/ukg/lsm/repository/AdminRepository.java	(date 1723198345270)
+@@ -1,9 +1,9 @@
+ package com.ukg.lsm.repository;
+-import com.ukg.lsm.entity.UserEntity;
++import com.ukg.lsm.entity.AdminEntity;
+ import org.springframework.data.jpa.repository.JpaRepository;
+ import org.springframework.stereotype.Repository;
+ 
+ @Repository
+-public interface UserRepository extends JpaRepository<UserEntity,Long> {
++public interface AdminRepository extends JpaRepository<AdminEntity, Long> {
+ 
+ }
+Index: adminService/src/main/java/com/ukg/lsm/controller/AdminController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/adminService/src/main/java/com/ukg/lsm/controller/AdminController.java b/adminService/src/main/java/com/ukg/lsm/controller/AdminController.java
+new file mode 100644
+--- /dev/null	(date 1723198345264)
++++ b/adminService/src/main/java/com/ukg/lsm/controller/AdminController.java	(date 1723198345264)
+@@ -0,0 +1,30 @@
++package com.ukg.lsm.controller;
++
++import com.ukg.lsm.entity.AdminEntity;
++import com.ukg.lsm.service.AdminService;
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.http.HttpStatus;
++import org.springframework.http.ResponseEntity;
++import org.springframework.web.bind.annotation.*;
++
++import java.util.List;
++
++@RequestMapping("/api/admin")
++@RestController
++public class AdminController {
++
++    @Autowired
++    private AdminService adminService;
++
++    @GetMapping
++    private ResponseEntity<List<AdminEntity>> getAdmins(){
++//        List<AdminEntity> adminList = adminService.getAdmins();
++//        return new ResponseEntity<>(adminList, HttpStatus.OK);
++        return ResponseEntity.status(HttpStatus.OK).body(adminService.getAdmins());
++    }
++    @PostMapping
++    private ResponseEntity<AdminEntity> postAdmin(@RequestBody AdminEntity admin){
++        AdminEntity adminRes = adminService.createAdmin(admin);
++        return new ResponseEntity<>(adminRes, HttpStatus.CREATED);
++    }
++}
+Index: adminService/src/main/java/com/ukg/lsm/entity/UserEntity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/adminService/src/main/java/com/ukg/lsm/entity/UserEntity.java b/adminService/src/main/java/com/ukg/lsm/entity/AdminEntity.java
+rename from adminService/src/main/java/com/ukg/lsm/entity/UserEntity.java
+rename to adminService/src/main/java/com/ukg/lsm/entity/AdminEntity.java
+--- a/adminService/src/main/java/com/ukg/lsm/entity/UserEntity.java	(revision d716a991053be40d59ecec80d334f4ef13ee8b9f)
++++ b/adminService/src/main/java/com/ukg/lsm/entity/AdminEntity.java	(date 1723198345267)
+@@ -11,15 +11,14 @@
+ @NoArgsConstructor
+ @AllArgsConstructor
+ @Data
+-public class UserEntity {
++public class AdminEntity {
+     @Id
+     @GeneratedValue()
+-    private Long id;
++    private int id;
+ 
+     private String firstName;
+     private String lastName;
+     private String email;
+-    private int number;
+     private String password;
+ 
+ }
+Index: adminService/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n\txsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd\">\r\n\t<modelVersion>4.0.0</modelVersion>\r\n\t<parent>\r\n\t\t<groupId>org.springframework.boot</groupId>\r\n\t\t<artifactId>spring-boot-starter-parent</artifactId>\r\n\t\t<version>3.3.2</version>\r\n\t\t<relativePath/> <!-- lookup parent from repository -->\r\n\t</parent>\r\n\t<groupId>com.ukg</groupId>\r\n\t<artifactId>lsm</artifactId>\r\n\t<version>0.0.1-SNAPSHOT</version>\r\n\t<name>LSM</name>\r\n\t<description>A project for managing a learning system</description>\r\n\t<url/>\r\n\t<licenses>\r\n\t\t<license/>\r\n\t</licenses>\r\n\t<developers>\r\n\t\t<developer/>\r\n\t</developers>\r\n\t<scm>\r\n\t\t<connection/>\r\n\t\t<developerConnection/>\r\n\t\t<tag/>\r\n\t\t<url/>\r\n\t</scm>\r\n\t<properties>\r\n\t\t<java.version>17</java.version>\r\n\t</properties>\r\n\t<dependencies>\r\n\t\t<dependency>\r\n\t\t\t<groupId>org.springframework.boot</groupId>\r\n\t\t\t<artifactId>spring-boot-starter-data-jpa</artifactId>\r\n\t\t</dependency>\r\n\t\t<dependency>\r\n\t\t\t<groupId>org.springframework.boot</groupId>\r\n\t\t\t<artifactId>spring-boot-starter-validation</artifactId>\r\n\t\t</dependency>\r\n\t\t<dependency>\r\n\t\t\t<groupId>org.springframework.boot</groupId>\r\n\t\t\t<artifactId>spring-boot-starter-web</artifactId>\r\n\t\t</dependency>\r\n\r\n\t\t<dependency>\r\n\t\t\t<groupId>org.postgresql</groupId>\r\n\t\t\t<artifactId>postgresql</artifactId>\r\n\t\t\t<scope>runtime</scope>\r\n\t\t</dependency>\r\n\t\t<dependency>\r\n\t\t\t<groupId>org.projectlombok</groupId>\r\n\t\t\t<artifactId>lombok</artifactId>\r\n\t\t\t<optional>true</optional>\r\n\t\t</dependency>\r\n\t\t<dependency>\r\n\t\t\t<groupId>org.springframework.boot</groupId>\r\n\t\t\t<artifactId>spring-boot-starter-test</artifactId>\r\n\t\t\t<scope>test</scope>\r\n\t\t</dependency>\r\n\t</dependencies>\r\n\r\n\t<build>\r\n\t\t<plugins>\r\n\t\t\t<plugin>\r\n\t\t\t\t<groupId>org.springframework.boot</groupId>\r\n\t\t\t\t<artifactId>spring-boot-maven-plugin</artifactId>\r\n\t\t\t\t<configuration>\r\n\t\t\t\t\t<excludes>\r\n\t\t\t\t\t\t<exclude>\r\n\t\t\t\t\t\t\t<groupId>org.projectlombok</groupId>\r\n\t\t\t\t\t\t\t<artifactId>lombok</artifactId>\r\n\t\t\t\t\t\t</exclude>\r\n\t\t\t\t\t</excludes>\r\n\t\t\t\t</configuration>\r\n\t\t\t</plugin>\r\n\t\t</plugins>\r\n\t</build>\r\n\r\n</project>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/adminService/pom.xml b/adminService/pom.xml
+--- a/adminService/pom.xml	(revision d716a991053be40d59ecec80d334f4ef13ee8b9f)
++++ b/adminService/pom.xml	(date 1723198345261)
+@@ -42,12 +42,12 @@
+ 			<groupId>org.springframework.boot</groupId>
+ 			<artifactId>spring-boot-starter-web</artifactId>
+ 		</dependency>
+-
+ 		<dependency>
+-			<groupId>org.postgresql</groupId>
+-			<artifactId>postgresql</artifactId>
+-			<scope>runtime</scope>
++			<groupId>com.h2database</groupId>
++			<artifactId>h2</artifactId>
++			<version>2.3.230</version>
+ 		</dependency>
++
+ 		<dependency>
+ 			<groupId>org.projectlombok</groupId>
+ 			<artifactId>lombok</artifactId>
+Index: adminService/.idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"CompilerConfiguration\">\r\n    <annotationProcessing>\r\n      <profile name=\"Maven default annotation processors profile\" enabled=\"true\">\r\n        <sourceOutputDir name=\"target/generated-sources/annotations\" />\r\n        <sourceTestOutputDir name=\"target/generated-test-sources/test-annotations\" />\r\n        <outputRelativeToContentRoot value=\"true\" />\r\n        <module name=\"lsm\" />\r\n      </profile>\r\n    </annotationProcessing>\r\n  </component>\r\n  <component name=\"JavacSettings\">\r\n    <option name=\"ADDITIONAL_OPTIONS_OVERRIDE\">\r\n      <module name=\"lsm\" options=\"-parameters\" />\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/adminService/.idea/compiler.xml b/adminService/.idea/compiler.xml
+--- a/adminService/.idea/compiler.xml	(revision d716a991053be40d59ecec80d334f4ef13ee8b9f)
++++ b/adminService/.idea/compiler.xml	(date 1723198345253)
+@@ -2,17 +2,20 @@
+ <project version="4">
+   <component name="CompilerConfiguration">
+     <annotationProcessing>
++      <profile default="true" name="Default" enabled="true" />
+       <profile name="Maven default annotation processors profile" enabled="true">
+         <sourceOutputDir name="target/generated-sources/annotations" />
+         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+         <outputRelativeToContentRoot value="true" />
+         <module name="lsm" />
++        <module name="lsm (1)" />
+       </profile>
+     </annotationProcessing>
+   </component>
+   <component name="JavacSettings">
+     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+       <module name="lsm" options="-parameters" />
++      <module name="lsm (1)" options="-parameters" />
+     </option>
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/jarRepositories.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/jarRepositories.xml b/.idea/jarRepositories.xml
+new file mode 100644
+--- /dev/null	(date 1723198345247)
++++ b/.idea/jarRepositories.xml	(date 1723198345247)
+@@ -0,0 +1,20 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="RemoteRepositoriesConfiguration">
++    <remote-repository>
++      <option name="id" value="central" />
++      <option name="name" value="Central Repository" />
++      <option name="url" value="https://repo.maven.apache.org/maven2" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="central" />
++      <option name="name" value="Maven Central repository" />
++      <option name="url" value="https://repo1.maven.org/maven2" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="jboss.community" />
++      <option name="name" value="JBoss Community repository" />
++      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
++    </remote-repository>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+new file mode 100644
+--- /dev/null	(date 1723198345245)
++++ b/.idea/.gitignore	(date 1723198345245)
+@@ -0,0 +1,3 @@
++# Default ignored files
++/shelf/
++/workspace.xml
+Index: adminService/.idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\r\n  <component name=\"MavenProjectsManager\">\r\n    <option name=\"originalFiles\">\r\n      <list>\r\n        <option value=\"$PROJECT_DIR$/pom.xml\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_22\" default=\"true\" project-jdk-name=\"zulu-22\" project-jdk-type=\"JavaSDK\" />\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/adminService/.idea/misc.xml b/adminService/.idea/misc.xml
+--- a/adminService/.idea/misc.xml	(revision d716a991053be40d59ecec80d334f4ef13ee8b9f)
++++ b/adminService/.idea/misc.xml	(date 1723198345257)
+@@ -5,6 +5,7 @@
+     <option name="originalFiles">
+       <list>
+         <option value="$PROJECT_DIR$/pom.xml" />
++        <option value="$PROJECT_DIR$/../userService/pom.xml" />
+       </list>
+     </option>
+   </component>
+Index: adminService/.idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"VcsDirectoryMappings\">\r\n    <mapping directory=\"\" vcs=\"Git\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/adminService/.idea/vcs.xml b/adminService/.idea/vcs.xml
+--- a/adminService/.idea/vcs.xml	(revision d716a991053be40d59ecec80d334f4ef13ee8b9f)
++++ b/adminService/.idea/vcs.xml	(date 1723198345259)
+@@ -2,5 +2,6 @@
+ <project version="4">
+   <component name="VcsDirectoryMappings">
+     <mapping directory="" vcs="Git" />
++    <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: adminService/.idea/encodings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"Encoding\">\r\n    <file url=\"file://$PROJECT_DIR$/src/main/java\" charset=\"UTF-8\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/adminService/.idea/encodings.xml b/adminService/.idea/encodings.xml
+--- a/adminService/.idea/encodings.xml	(revision d716a991053be40d59ecec80d334f4ef13ee8b9f)
++++ b/adminService/.idea/encodings.xml	(date 1723198345255)
+@@ -2,5 +2,6 @@
+ <project version="4">
+   <component name="Encoding">
+     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
++    <file url="file://$PROJECT_DIR$/../userService/src/main/java" charset="UTF-8" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"a140d879-354b-4f9d-b86c-c5066326e48c\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.gitignore\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gitignore\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/courseService/.mvn/wrapper/maven-wrapper.properties\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/mvnw\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/courseService/mvnw\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/mvnw.cmd\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/courseService/mvnw.cmd\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/courseService/pom.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/ukg/lsm/LsmApplication.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/courseService/src/main/java/com/ukg/lsm/LsmApplication.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/ukg/lsm/entity/UserEntity.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/courseService/src/main/java/com/ukg/lsm/entity/UserEntity.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/ukg/lsm/repository/UserRepository.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/courseService/src/main/java/com/ukg/lsm/repository/UserRepository.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/application.properties\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/courseService/src/main/resources/application.properties\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/test/java/com/ukg/lsm/LsmApplicationTests.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/courseService/src/test/java/com/ukg/lsm/LsmApplicationTests.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"mavenHomeTypeForPersistence\" value=\"WRAPPER\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectColorInfo\"><![CDATA[{\r\n  \"associatedIndex\": 4\r\n}]]></component>\r\n  <component name=\"ProjectId\" id=\"2kMX6kvOp310OfTwPQXkMmoUikD\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RequestMappingsPanelOrder0\": \"0\",\r\n    \"RequestMappingsPanelOrder1\": \"1\",\r\n    \"RequestMappingsPanelWidth0\": \"75\",\r\n    \"RequestMappingsPanelWidth1\": \"75\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"Spring Boot.LsmApplication.executor\": \"Run\",\r\n    \"git-widget-placeholder\": \"main\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"last_opened_file_path\": \"C:/Users/devansh.panda/LMSG4-Backend\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\devansh.panda\\LMSG4-Backend\" />\r\n      <recent name=\"C:\\Users\\devansh.panda\\LMSG4-Backend\\courseService\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\devansh.panda\\LMSG4-Backend\\courseService/\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"LsmApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\r\n      <option name=\"ALTERNATIVE_JRE_PATH\" value=\"zulu-22\" />\r\n      <option name=\"ALTERNATIVE_JRE_PATH_ENABLED\" value=\"true\" />\r\n      <module name=\"lsm\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.ukg.lsm.LsmApplication\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.20224.300\" />\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-IU-242.20224.300\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"a140d879-354b-4f9d-b86c-c5066326e48c\" name=\"Changes\" comment=\"\" />\r\n      <created>1723094245622</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1723094245622</updated>\r\n      <workItem from=\"1723094246661\" duration=\"4246000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision d716a991053be40d59ecec80d334f4ef13ee8b9f)
++++ b/.idea/workspace.xml	(date 1723198345250)
+@@ -4,18 +4,7 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="a140d879-354b-4f9d-b86c-c5066326e48c" name="Changes" comment="">
+-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/courseService/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/courseService/mvnw" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/courseService/mvnw.cmd" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/courseService/pom.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ukg/lsm/LsmApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/courseService/src/main/java/com/ukg/lsm/LsmApplication.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ukg/lsm/entity/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/courseService/src/main/java/com/ukg/lsm/entity/UserEntity.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ukg/lsm/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/courseService/src/main/java/com/ukg/lsm/repository/UserRepository.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/courseService/src/main/resources/application.properties" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/test/java/com/ukg/lsm/LsmApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/courseService/src/test/java/com/ukg/lsm/LsmApplicationTests.java" afterDir="false" />
+-    </list>
++    <list default="true" id="a140d879-354b-4f9d-b86c-c5066326e48c" name="Changes" comment="" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -31,9 +20,9 @@
+       </MavenGeneralSettings>
+     </option>
+   </component>
+-  <component name="ProjectColorInfo"><![CDATA[{
+-  "associatedIndex": 4
+-}]]></component>
++  <component name="ProjectColorInfo">{
++  &quot;associatedIndex&quot;: 4
++}</component>
+   <component name="ProjectId" id="2kMX6kvOp310OfTwPQXkMmoUikD" />
+   <component name="ProjectViewState">
+     <option name="hideEmptyMiddlePackages" value="true" />
+@@ -49,7 +38,7 @@
+     "Spring Boot.LsmApplication.executor": "Run",
+     "git-widget-placeholder": "main",
+     "kotlin-language-version-configured": "true",
+-    "last_opened_file_path": "C:/Users/devansh.panda/LMSG4-Backend",
++    "last_opened_file_path": "C:/Users/sujal.barsaiyan/Desktop/lms/LMSG4-Backend/adminService",
+     "node.js.detected.package.eslint": "true",
+     "node.js.detected.package.tslint": "true",
+     "node.js.selected.package.eslint": "(autodetect)",
