@@ -5,20 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a140d879-354b-4f9d-b86c-c5066326e48c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commentService/src/main/java/com/ukg/lsm/service/CommentService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commentService/src/main/java/com/ukg/lsm/service/impl/CommentServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/userService/src/main/java/com/ukg/lsm/config/Config.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/userService/src/main/java/com/ukg/lsm/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/userService/src/main/java/com/ukg/lsm/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commentService/src/main/java/com/ukg/lsm/entity/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/commentService/src/main/java/com/ukg/lsm/entity/Comment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commentService/src/main/java/com/ukg/lsm/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/commentService/src/main/java/com/ukg/lsm/repository/CommentRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/userService/src/main/java/com/ukg/lsm/entity/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/userService/src/main/java/com/ukg/lsm/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/userService/src/main/java/com/ukg/lsm/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/userService/src/main/java/com/ukg/lsm/repository/UserRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +67,7 @@
       <recent name="C:\Users\devansh.panda\LMSG4-Backend\courseService/" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.LsmApplication">
+  <component name="RunManager">
     <configuration name="LsmApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="lsm (1)" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.ukg.lsm.LsmApplication" />
@@ -104,19 +91,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <list>
-      <item itemvalue="Spring Boot.LsmApplication (1)" />
-      <item itemvalue="Spring Boot.LsmApplication (2)" />
-      <item itemvalue="Spring Boot.LsmApplication" />
-    </list>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.20224.300" />
-        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-IU-242.20224.300" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
