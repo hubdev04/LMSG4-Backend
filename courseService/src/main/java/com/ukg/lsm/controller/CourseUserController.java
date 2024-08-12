@@ -15,6 +15,7 @@ import java.util.List;
 public class CourseUserController {
     @Autowired
     CourseUserService courseUserService;
+
     @GetMapping("/{userId}")
     public ResponseDTO getAllCourses(@PathVariable Long userId) throws ResourceNotFoundException {
         return ResponseDTO.builder()
@@ -25,6 +26,7 @@ public class CourseUserController {
                 .completionTimeStamp(LocalDateTime.now())
                 .build();
     }
+
     @PostMapping
     public ResponseDTO saveCourses(@RequestBody List<CourseUserPostDto> courseUserPostDto)throws Exception{
         return ResponseDTO.builder()
