@@ -8,8 +8,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="lsm (2)" />
-        <module name="lsm" />
+        <module name="lsm (3)" />
         <module name="lsm (1)" />
+        <module name="lsm" />
       </profile>
     </annotationProcessing>
   </component>
@@ -18,6 +19,7 @@
       <module name="lsm" options="-parameters" />
       <module name="lsm (1)" options="-parameters" />
       <module name="lsm (2)" options="-parameters" />
+      <module name="lsm (3)" options="-parameters" />
     </option>
   </component>
 </project>
