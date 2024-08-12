@@ -3,6 +3,7 @@ package com.ukg.lsm.service.imp;
 import com.ukg.lsm.entity.AdminEntity;
 import com.ukg.lsm.repository.AdminRepository;
 import com.ukg.lsm.service.AdminService;
+import com.ukg.lsm.utils.InvalidRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;

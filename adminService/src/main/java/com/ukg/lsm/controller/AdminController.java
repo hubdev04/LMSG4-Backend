@@ -2,6 +2,7 @@ package com.ukg.lsm.controller;
 
 import com.ukg.lsm.entity.AdminEntity;
 import com.ukg.lsm.service.AdminService;
+import com.ukg.lsm.utils.InvalidRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
