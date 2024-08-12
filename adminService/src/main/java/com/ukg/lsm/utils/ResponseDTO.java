@@ -14,6 +14,6 @@ public class ResponseDTO {
     private boolean success;
     private String message;
     private LocalDateTime completionTimeStamp;
-    private Object result;
+    private Object results;
     private List<ErrorDetail> errorDetails;
 }

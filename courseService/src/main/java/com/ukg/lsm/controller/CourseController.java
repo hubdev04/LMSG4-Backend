@@ -51,6 +51,7 @@ public class CourseController {
                 .success(true)
                 .errorDetails(null)
                 .message("Course fetched successfully")
+                .result(courseService.findActiveAndApprovedCourseById(courseId))
                 .completionTimeStamp(LocalDateTime.now())
                 .build();
     }
