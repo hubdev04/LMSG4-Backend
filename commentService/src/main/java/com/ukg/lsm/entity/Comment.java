@@ -3,6 +3,7 @@ package com.ukg.lsm.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,15 +12,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class UserEntity {
+public class Comment {
     @Id
     @GeneratedValue()
-    private Long id;
-
-    private String firstName;
-    private String lastName;
-    private String email;
-    private int number;
-    private String password;
+    private Long commentId;
+    private String commentData;
+    private Long courseId;
+    private Long userId;
 
 }
