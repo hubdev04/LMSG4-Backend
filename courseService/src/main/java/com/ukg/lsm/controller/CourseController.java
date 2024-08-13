@@ -1,16 +1,17 @@
 package com.ukg.lsm.controller;
-
 import com.ukg.lsm.configuration.ResponseDTO;
 import com.ukg.lsm.dtos.CoursePostDto;
+import com.ukg.lsm.dtos.CourseStatusChangeDto;
+import com.ukg.lsm.exceptions.InvalidRequest;
 import com.ukg.lsm.exceptions.ResourceNotFoundException;
 import com.ukg.lsm.service.CourseMentorService;
 import com.ukg.lsm.service.CourseService;
 import com.ukg.lsm.service.CourseUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.time.LocalDateTime;
 import java.util.List;
+
 
 @RestController
 @RequestMapping("/courses")
@@ -56,4 +57,25 @@ public class CourseController {
                 .build();
     }
 
+    @PutMapping
+    public ResponseDTO statusChange(@RequestBody List<CourseStatusChangeDto> courseStatusChangeDtos) throws ResourceNotFoundException, InvalidRequest {
+        return ResponseDTO.builder()
+                .success(true)
+                .errorDetails(null)
+                .message("status of all the courses changed successfully")
+                .result(courseService.saveStatusChange(courseStatusChangeDtos))
+                .completionTimeStamp(LocalDateTime.now())
+                .build();
+    }
+
+    @PutMapping("/delete")
+    public ResponseDTO softDelete(@RequestBody List<Long> courseIds) throws ResourceNotFoundException, InvalidRequest {
+        return ResponseDTO.builder()
+                .success(true)
+                .errorDetails(null)
+                .message("soft delete of all the courses changed successfully")
+                .result(courseService.softDeleteCourses(courseIds))
+                .completionTimeStamp(LocalDateTime.now())
+                .build();
+    }
 }
