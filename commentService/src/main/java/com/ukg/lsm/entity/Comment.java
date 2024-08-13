@@ -19,5 +19,8 @@ public class Comment {
     private String commentData;
     private Long courseId;
     private Long userId;
+    private Boolean isActive;
+
+private Boolean isDeleted;
 
 }
