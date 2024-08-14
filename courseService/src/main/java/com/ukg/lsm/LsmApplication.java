@@ -11,6 +11,6 @@ public class LsmApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(LsmApplication.class, args);
-		System.out.println("Hello World");
+		System.out.println("\n\n Course service \n\n");
 	}
 }

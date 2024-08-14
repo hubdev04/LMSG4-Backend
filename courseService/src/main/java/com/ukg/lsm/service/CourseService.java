@@ -52,6 +52,7 @@ public class CourseService {
         return courseRepository.saveAll(courses.stream()
                 .map(this::mapDtoToEntity)
                 .collect(Collectors.toList()));
+
     }
     public List<CourseEntity> saveStatusChange(List<CourseStatusChangeDto> courseStatusChangeDtos) throws ResourceNotFoundException, InvalidRequest {
         List<CourseEntity> coursesWhoseStatusNeedToBeChanged = new ArrayList<>();
@@ -80,8 +81,8 @@ public class CourseService {
             findActiveAndApprovedCourseById(courseId);
             Optional<CourseEntity> optionalCourseEntity = courseRepository.findById(courseId);
             CourseEntity courseEntityToBeDeleted = optionalCourseEntity.get();
-            courseEntityToBeDeleted.setIsDeleted(false);
-            courseEntityToBeDeleted.setIsActive(true);
+            courseEntityToBeDeleted.setIsDeleted(true);
+            courseEntityToBeDeleted.setIsActive(false);
             courseEntitiesToBeDeleted.add(courseEntityToBeDeleted);
         }
         return courseRepository.saveAll(courseEntitiesToBeDeleted);
