@@ -28,4 +28,8 @@ public class UserService {
         if(body.getRole() == Role.ADMIN)throw new InvalidRequest("You cannot create an admin");
         return userRepository.save(body);
     }
+
+    public Optional<UserEntity> findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
 }
