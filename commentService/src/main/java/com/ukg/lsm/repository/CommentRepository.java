@@ -7,10 +7,19 @@ import java.util.*;
 
 @Repository
 public interface CommentRepository extends JpaRepository<Comment,Long> {
-//    List<Comment> findByUserIdAndCourseIdAndIsDeletedFalse(Long userId, Long courseId);
-//    List<Comment> findByCourseIdAndIsDeletedFalse(Long courseId);
-//    List<Comment> findByUserIdAndIsDeletedFalse(Long userId);
-Optional<Comment> findCommentsByCourseId(Long courseId);
+    Optional<List<Comment>> findByCourseId(Long courseId);
+
+    Optional<List<Comment>> findByCourseIdAndUserId(Long courseId, Long userId);
+
+    Optional<List<Comment>> findByIsActiveTrueAndIsDeletedFalse();
+
+    Optional<List<Comment>> findByCourseIdAndUserIdAndIsActiveTrueAndIsDeletedFalse(Long courseId, Long userId);
+
+    Optional<List<Comment>> findByCourseIdAndIsActiveTrueAndIsDeletedFalse(Long courseId);
+
+    Optional<List<Comment>> findByUserIdAndIsActiveTrueAndIsDeletedFalse(Long userId);
 
 
 }
+
+

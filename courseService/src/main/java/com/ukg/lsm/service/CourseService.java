@@ -80,8 +80,8 @@ public class CourseService {
             findActiveAndApprovedCourseById(courseId);
             Optional<CourseEntity> optionalCourseEntity = courseRepository.findById(courseId);
             CourseEntity courseEntityToBeDeleted = optionalCourseEntity.get();
-            courseEntityToBeDeleted.setIsDeleted(false);
-            courseEntityToBeDeleted.setIsActive(true);
+            courseEntityToBeDeleted.setIsDeleted(true);
+            courseEntityToBeDeleted.setIsActive(false);
             courseEntitiesToBeDeleted.add(courseEntityToBeDeleted);
         }
         return courseRepository.saveAll(courseEntitiesToBeDeleted);
