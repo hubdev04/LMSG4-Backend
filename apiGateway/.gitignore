@@ -1,6 +1,6 @@
 HELP.md
 target/
-!courseService/.mvn/wrapper/maven-wrapper.jar
+!.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 
@@ -15,13 +15,6 @@ target/
 
 ### IntelliJ IDEA ###
 .idea
-*.idea
-apiGateway/.idea
-adminService/.idea
-mentorService/.idea
-commentService/.idea
-userService/.idea
-courseService/.idea
 *.iws
 *.iml
 *.ipr

@@ -52,6 +52,7 @@ public class CourseService {
         return courseRepository.saveAll(courses.stream()
                 .map(this::mapDtoToEntity)
                 .collect(Collectors.toList()));
+
     }
     public List<CourseEntity> saveStatusChange(List<CourseStatusChangeDto> courseStatusChangeDtos) throws ResourceNotFoundException, InvalidRequest {
         List<CourseEntity> coursesWhoseStatusNeedToBeChanged = new ArrayList<>();
