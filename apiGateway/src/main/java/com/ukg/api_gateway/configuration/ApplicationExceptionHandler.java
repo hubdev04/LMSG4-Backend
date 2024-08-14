@@ -1,5 +1,8 @@
 package com.ukg.api_gateway.configuration;
 
+import com.ukg.api_gateway.exceptions.InvalidRequest;
+import com.ukg.api_gateway.exceptions.NoAuthorisationException;
+import com.ukg.api_gateway.exceptions.ResourceNotFoundException;
 import com.ukg.lsm.exceptions.InvalidRequest;
 import com.ukg.lsm.exceptions.NoAuthorisationException;
 import com.ukg.lsm.exceptions.ResourceNotFoundException;
