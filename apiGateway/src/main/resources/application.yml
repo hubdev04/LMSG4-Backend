@@ -1,6 +1,0 @@
-#spring:
-#  security:
-#    oauth2:
-#      resourceserver:
-#        jwt:
-#          issuer-uri: https://localhost:8080/.well-known/openid-configuration
