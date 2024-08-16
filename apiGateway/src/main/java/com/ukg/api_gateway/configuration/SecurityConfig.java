@@ -1,10 +1,12 @@
 package com.ukg.api_gateway.configuration;
 
 import com.ukg.api_gateway.entity.UserEntity;
+import com.ukg.api_gateway.helper.JWTAuthenticationFilter;
 import com.ukg.api_gateway.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -22,6 +24,9 @@ public class SecurityConfig {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private JWTAuthenticationFilter jwtAuthenticationFilter;
 
     @Bean
     public UserDetailsService userDetailsService() {
@@ -44,19 +49,29 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain configure (HttpSecurity httpSecurity) throws Exception {
+//        httpSecurity.csrf().disable()
+//                .authorizeHttpRequests((authorize) ->
+//                        authorize.anyRequest().permitAll()
+//                                .requestMatchers(HttpMethod.POST, "/api/auth/**").permitAll()
+////                                .requestMatchers(HttpMethod.)
+//                                .anyRequest().authenticated()
+//                ).exceptionHandling(ex -> ex.authenticationEntryPoint())
         return httpSecurity
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/users/*").permitAll()
+                        .requestMatchers("/api/auth/*").permitAll()
                         .anyRequest().authenticated())
                 .formLogin(form -> form
                         .loginProcessingUrl("api/users/login")
                         .defaultSuccessUrl("/home", true)
                         .permitAll())
                 .logout(logout -> logout.permitAll())
+                .addFilter(jwtAuthenticationFilter)
                 .build();
     }
 
 //    @Bean
-//    public AuthenticationManager authenticationManager(HttpSecurity http, PasswordE)
+//    public JWTAuthenticationFilter jwtAuthenticationFilter(){
+//        return new JWTAuthenticationFilter();
+//    }
 }

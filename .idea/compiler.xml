@@ -7,14 +7,20 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="lsm (2)" />
-        <module name="lsm" />
+        <module name="api-gateway" />
         <module name="lsm (1)" />
+        <module name="LMS" />
+        <module name="lsm" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="lsm (2)" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="LMS" options="-parameters" />
+      <module name="api-gateway" options="-parameters" />
       <module name="lsm" options="-parameters" />
       <module name="lsm (1)" options="-parameters" />
       <module name="lsm (2)" options="-parameters" />

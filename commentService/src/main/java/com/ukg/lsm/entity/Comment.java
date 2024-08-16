@@ -12,6 +12,7 @@ import lombok.*;
 @Data
 @Builder
 public class Comment {
+
     @Id
     @GeneratedValue()
     private Long commentId;
