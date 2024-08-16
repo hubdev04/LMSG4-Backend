@@ -23,5 +23,6 @@ public class UserEntity {
     private String lastName;
     @Column(unique = true)
     private String mobile;
+    @Enumerated(EnumType.STRING)
     private Role role;
 }
