@@ -56,7 +56,7 @@ public class UserService {
             throw new NoAuthorisationException("Credentials don't match. Try with valid credentials");
         }
 
-        String token = jwtUtil.generateToken(existingUser.getEmail(), existingUser.getRole());
+        String token = jwtUtil.generateToken(existingUser.getEmail(), existingUser.getRole(), existingUser.getId());
         System.out.println("Email: " + jwtUtil.getEmail(token));
         System.out.println("Role: " + jwtUtil.getRole(token));
 

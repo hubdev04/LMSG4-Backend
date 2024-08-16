@@ -3,12 +3,9 @@ package com.ukg.api_gateway.helper;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.io.Decoders;
-import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
-import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,17 +13,21 @@ import java.util.Map;
 @Component
 public class JWTUtil {
 
-    private SecretKey secret = Jwts.SIG.HS256.key().build();
+    private final SecretKey secret = Jwts.SIG.HS256.key().build();
 
-    public String generateToken(String email, Role role){
+    public String generateToken(String email, Role role, Long id){
         Map<String, Object> claims = new HashMap<>();
         claims.put("role", role);
+        claims.put("id", id);
         return createToken(claims, email);
     }
 
     private String createToken(Map<String, Object> claims, String subject){
-        return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
-                .signWith(SignatureAlgorithm.HS256, secret).compact();
+        return Jwts.builder().setClaims(claims).setSubject(subject)
+                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .setExpiration(new Date(System.currentTimeMillis() + (60 * 60 * 1000)))
+                .signWith(SignatureAlgorithm.HS256, secret)
+                .compact();
     }
 
     private Claims extractAllClaims(String token){
@@ -42,5 +43,25 @@ public class JWTUtil {
         Claims claims = extractAllClaims(token);
 //        System.out.println(claims.get("role").getClass());
         return claims.get("role");
+    }
+
+    public Object getID(String token){
+        Claims claims = extractAllClaims(token);
+        return claims.get("id");
+    }
+
+    public boolean validateToken(String token) {
+        Claims claims = extractAllClaims(token);
+        return !isTokenExpired(claims);
+//        try {
+//
+//        } catch (ExpiredJwtException | MalformedJwtException | UnsupportedJwtException | SignatureException | IllegalArgumentException e) {
+//            // Log or handle the exceptions as needed
+//            return false;
+//        }
+    }
+
+    private boolean isTokenExpired(Claims claims) {
+        return claims.getExpiration().before(new Date());
     }
 }
