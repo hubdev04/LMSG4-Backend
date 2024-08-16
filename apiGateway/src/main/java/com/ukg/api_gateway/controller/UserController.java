@@ -1,8 +1,10 @@
 package com.ukg.api_gateway.controller;
 
 import com.ukg.api_gateway.configuration.ResponseDTO;
+import com.ukg.api_gateway.dtos.UserLoginDTO;
 import com.ukg.api_gateway.entity.UserEntity;
 import com.ukg.api_gateway.exceptions.InvalidRequest;
+import com.ukg.api_gateway.exceptions.NoAuthorisationException;
 import com.ukg.api_gateway.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.time.LocalDateTime;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api/auth")
 public class UserController {
 
     @Autowired
@@ -27,6 +29,17 @@ public class UserController {
                 .errorDetails(null)
                 .message("User registered successfully")
                 .result(userService.registerUser(user))
+                .completionTimeStamp(LocalDateTime.now())
+                .build();
+    }
+
+    @PostMapping("/login")
+    public ResponseDTO loginUser(@RequestBody UserLoginDTO user) throws NoAuthorisationException {
+        return ResponseDTO.builder()
+                .success(true)
+                .errorDetails(null)
+                .message("User logged in successfully")
+                .result(userService.loginUser(user))
                 .completionTimeStamp(LocalDateTime.now())
                 .build();
     }
