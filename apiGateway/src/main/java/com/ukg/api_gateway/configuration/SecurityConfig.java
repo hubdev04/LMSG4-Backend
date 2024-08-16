@@ -47,7 +47,7 @@ public class SecurityConfig {
         return httpSecurity
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/*").permitAll()
+                        .requestMatchers("/**").permitAll()
                         .anyRequest().authenticated())
                 .formLogin(form -> form
                         .loginProcessingUrl("api/users/login")
@@ -56,7 +56,4 @@ public class SecurityConfig {
                 .logout(logout -> logout.permitAll())
                 .build();
     }
-
-//    @Bean
-//    public AuthenticationManager authenticationManager(HttpSecurity http, PasswordE)
 }
