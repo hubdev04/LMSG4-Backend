@@ -4,20 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="965873c7-054c-4e77-9d8f-26d8d5763196" name="Changes" comment="merge">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiGateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/apiGateway/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiGateway/src/main/java/com/ukg/api_gateway/ApiGatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiGateway/src/main/java/com/ukg/api_gateway/ApiGatewayApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiGateway/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/apiGateway/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiGateway/src/main/resources/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/courseService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/courseService/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/courseService/src/main/java/com/ukg/lsm/LsmApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/courseService/src/main/java/com/ukg/lsm/course.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/courseService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/courseService/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registry/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/registry/pom.xml" afterDir="false" />
-    </list>
+    <list default="true" id="965873c7-054c-4e77-9d8f-26d8d5763196" name="Changes" comment="merge" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -77,7 +64,7 @@
     "Maven.api-gateway [clean:clean].executor": "Run",
     "Maven.api-gateway [clean].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "ramansh",
+    "git-widget-placeholder": "purvi",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/ramansh.goyal/ukg/LMSG4-Backend/registry"
   }
