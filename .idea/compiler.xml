@@ -10,11 +10,11 @@
         <module name="api-gateway" />
         <module name="registry" />
         <module name="lsm (1)" />
-        <module name="LMS" />
         <module name="lsm" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="LMS" target="17" />
       <module name="lsm (2)" target="17" />
     </bytecodeTargetLevel>
   </component>
