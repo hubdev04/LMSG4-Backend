@@ -1,22 +1,19 @@
 package com.ukg.api_gateway.configuration;
 
-import com.ukg.api_gateway.entity.UserEntity;
 import com.ukg.api_gateway.helper.JWTAuthenticationFilter;
+import com.ukg.api_gateway.helper.JWTEntryPoint;
 import com.ukg.api_gateway.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -28,50 +25,25 @@ public class SecurityConfig {
     @Autowired
     private JWTAuthenticationFilter jwtAuthenticationFilter;
 
-    @Bean
-    public UserDetailsService userDetailsService() {
-//        UserDetails user = User.withUsername("user")
-//                .password("password")
-//                .roles("USER")
-//                .build();
-//        return new InMemoryUserDetailsManager(user);
-
-        return email -> {
-            UserEntity user = userService.findByEmail(email)
-                    .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
-            return org.springframework.security.core.userdetails.User.builder()
-                    .username(user.getEmail())
-                    .password(user.getPassword())
-                    .roles(user.getRole().name())
-                    .build();
-        };
-    }
+    @Autowired
+    private JWTEntryPoint jwtEntryPoint;
 
     @Bean
     public SecurityFilterChain configure (HttpSecurity httpSecurity) throws Exception {
-//        httpSecurity.csrf().disable()
-//                .authorizeHttpRequests((authorize) ->
-//                        authorize.anyRequest().permitAll()
-//                                .requestMatchers(HttpMethod.POST, "/api/auth/**").permitAll()
-////                                .requestMatchers(HttpMethod.)
-//                                .anyRequest().authenticated()
-//                ).exceptionHandling(ex -> ex.authenticationEntryPoint())
+
         return httpSecurity
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/*").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/auth/*").permitAll()
                         .anyRequest().authenticated())
-                .formLogin(form -> form
-                        .loginProcessingUrl("api/users/login")
-                        .defaultSuccessUrl("/home", true)
-                        .permitAll())
-                .logout(logout -> logout.permitAll())
-                .addFilter(jwtAuthenticationFilter)
+                .exceptionHandling(ex -> ex.authenticationEntryPoint(jwtEntryPoint))
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
 
-//    @Bean
-//    public JWTAuthenticationFilter jwtAuthenticationFilter(){
-//        return new JWTAuthenticationFilter();
-//    }
+    @Bean
+    public AuthenticationManager authManager(AuthenticationConfiguration authConfig) throws Exception {
+        return authConfig.getAuthenticationManager();
+    }
 }
