@@ -53,12 +53,6 @@ public class JWTUtil {
     public boolean validateToken(String token) {
         Claims claims = extractAllClaims(token);
         return !isTokenExpired(claims);
-//        try {
-//
-//        } catch (ExpiredJwtException | MalformedJwtException | UnsupportedJwtException | SignatureException | IllegalArgumentException e) {
-//            // Log or handle the exceptions as needed
-//            return false;
-//        }
     }
 
     private boolean isTokenExpired(Claims claims) {
