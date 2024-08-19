@@ -15,6 +15,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.Objects;
 
 @Component
 public class JWTAuthenticationFilter extends OncePerRequestFilter {
@@ -25,12 +26,14 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
     @Autowired
     private UserDetailsService userDetailsService;
 
-//    public JWTAuthenticationFilter(){
-//        super(Config.class);
-//    }
-
     @Override
     public void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+//        System.out.println(request.getRequestURI());
+//        if(Objects.equals(request.getRequestURI(), "/api/auth/register"))return;
+
+        System.out.println("\n\n------- FILTER ---------\n");
+
+
         String bearerToken = request.getHeader("Authorization");
         String token = null;
         if(StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")){
@@ -50,58 +53,4 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
 
-//    @Override
-//    public GatewayFilter apply(Config config){
-//        return ((exchange, chain) -> {
-//            if(!exchange.getRequest().getHeaders().containsKey(HttpHeaders.AUTHORIZATION)){
-//                throw new RuntimeException("Authorization headers not found");
-//            }
-//
-//            String headers = exchange.getRequest().getHeaders().get(HttpHeaders.AUTHORIZATION).get(0);
-//
-//            if(headers == null || !headers.startsWith("Bearer ")){
-//                throw new RuntimeException("Token not found");
-//            }
-//
-//            String token = headers.substring(7);
-//            if(!jwtUtil.validateToken(token)){
-//                throw new RuntimeException("Unauthorized");
-//            }
-//
-//            return chain.filter(exchange);
-//        });
-//    }
-
-//    public static class Config{}
-
-//    @Override
-//    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-//
-//        HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
-//        String jwt = resolveToken(httpServletRequest);
-//
-//        if(StringUtils.hasText(jwt)){
-//            if(jwtUtil.validateToken(jwt)){
-//                String email = jwtUtil.getEmail(jwt);
-//                UserDetails userDetails = this.userDetailsService.loadUserByUsername(email);
-//
-//                UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-//                authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(httpServletRequest));
-//                SecurityContextHolder.getContext().setAuthentication(authToken);
-//            }
-//        }
-//
-//        filterChain.doFilter(servletRequest, servletResponse);
-//    }
-//
-//    private String resolveToken(HttpServletRequest request) {
-//
-//        String bearerToken = request.getHeader("Authorization");
-//
-//        if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
-//            return bearerToken.substring(7);
-//        }
-//
-//        return null;
-//    }
 }
