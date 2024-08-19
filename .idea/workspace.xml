@@ -5,14 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="965873c7-054c-4e77-9d8f-26d8d5763196" name="Changes" comment="merge">
-      <change afterPath="$PROJECT_DIR$/apiGateway/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commentService/src/main/java/com/ukg/lsm/configuration/AppConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commentService/src/main/java/com/ukg/lsm/exception/InvalidRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09-08-2024_15_46__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09-08-2024_15_46__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiGateway/src/main/java/com/ukg/api_gateway/configuration/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiGateway/src/main/java/com/ukg/api_gateway/configuration/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiGateway/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/apiGateway/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/courseService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/courseService/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/courseService/src/main/java/com/ukg/lsm/controller/CourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/courseService/src/main/java/com/ukg/lsm/controller/CourseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/courseService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/courseService/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commentService/src/main/java/com/ukg/lsm/configuration/ErrorDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/commentService/src/main/java/com/ukg/lsm/configuration/ErrorDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commentService/src/main/java/com/ukg/lsm/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/commentService/src/main/java/com/ukg/lsm/controller/CommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commentService/src/main/java/com/ukg/lsm/service/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/commentService/src/main/java/com/ukg/lsm/service/CommentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commentService/src/main/java/com/ukg/lsm/service/CommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/commentService/src/main/java/com/ukg/lsm/service/CommentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commentService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/commentService/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,14 +76,17 @@
     "Maven.api-gateway [clean:clean].executor": "Run",
     "Maven.api-gateway [clean].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "ramansh",
+    "git-widget-placeholder": "purvi",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/ramansh.goyal/ukg/LMSG4-Backend/courseService"
+    "last_opened_file_path": "C:/Users/purvi.sharma/Downloads/LMSG4-Backend/commentService"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\ramansh.goyal\ukg\LMSG4-Backend\apiGateway\src\main\java\com\ukg\api_gateway" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.ukg.lsm.exception" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -92,7 +96,20 @@
       <command value="mvn clean:clean" />
     </option>
   </component>
-  <component name="RunManager" selected="Application.api-gateway">
+  <component name="RunManager" selected="Application.LsmApplication">
+    <configuration name="LsmApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ukg.lsm.LsmApplication" />
+      <module name="lsm (1)" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ukg.lsm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="RegisteryApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ukg.LMS.RegisteryApplication" />
       <module name="registry" />
@@ -130,13 +147,15 @@
     </configuration>
     <list>
       <item itemvalue="Application.api-gateway" />
+      <item itemvalue="Application.LsmApplication" />
       <item itemvalue="Application.RegisteryApplication" />
       <item itemvalue="Application.course" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.RegisteryApplication" />
+        <item itemvalue="Application.LsmApplication" />
         <item itemvalue="Application.course" />
+        <item itemvalue="Application.RegisteryApplication" />
       </list>
     </recent_temporary>
   </component>
