@@ -32,8 +32,14 @@ public class CommentServiceImpl implements CommentService {
     }
     private void validateCourseId(Long courseId) throws InvalidRequest {
         try {
+
             ResponseEntity<String> response = restTemplate.getForEntity(COURSE_SERVICE_URL + courseId, String.class);
+
+            System.out.println("hello purvi here---------- \n" + response.getStatusCode()+"hello purvi here---------- \n");
+
+
             if (response.getStatusCode() != HttpStatus.OK) {
+                System.out.println(response.getStatusCode());
                 throw new InvalidRequest("Invalid courseId: " + courseId);
             }
         }catch (Exception e) {

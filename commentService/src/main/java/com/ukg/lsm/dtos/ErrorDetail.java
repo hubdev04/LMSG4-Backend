@@ -1,4 +1,4 @@
-package com.ukg.lsm.configuration;
+package com.ukg.lsm.dtos;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
