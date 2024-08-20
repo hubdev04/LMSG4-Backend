@@ -7,8 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ApiGatewayApplication {
 
 	public static void main(String[] args) {
-		System.out.println("hello----world");
-		System.out.println("hello-hello");
+		System.out.println("\n\n  api gateway running \n\n");
 		SpringApplication.run(ApiGatewayApplication.class, args);
 	}
 

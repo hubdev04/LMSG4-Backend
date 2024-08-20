@@ -26,6 +26,7 @@ public class CourseController {
 
     @GetMapping("/")
     public ResponseDTO getAllCourses() throws ResourceNotFoundException {
+        System.out.println("\n\n hello hello \n\n" );
         return ResponseDTO.builder()
                 .success(true)
                 .errorDetails(null)

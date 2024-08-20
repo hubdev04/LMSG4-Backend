@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class Comment {
+
     @Id
     @GeneratedValue()
     private Long commentId;
