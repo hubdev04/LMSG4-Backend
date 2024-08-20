@@ -1,18 +1,22 @@
 server:
   port: 8080
-
 spring:
   application:
-    name: api-gateway
+    name: API-GATEWAY
   cloud:
     gateway:
       routes:
         - id: COURSE-SERVICE
           uri: lb://COURSE-SERVICE
           predicates:
-            - Path = /courses/**
+            - Path=/courses/**
 
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:9000/eureka/
+        - id: AUTH-SERVICE
+          uri: lb://AUTH-SERVICE
+          predicates:
+            - Path=/api/auth/**
+
+  eureka:
+    client:
+      service-url:
+        defaultZone: http://localhost:8761/eureka/
