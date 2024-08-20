@@ -1,7 +1,7 @@
 package com.ukg.api_gateway.configuration;
 
-import com.ukg.api_gateway.helper.JWTAuthenticationFilter;
-import com.ukg.api_gateway.helper.JWTEntryPoint;
+import com.ukg.api_gateway.security.JWTAuthenticationFilter;
+import com.ukg.api_gateway.security.JWTEntryPoint;
 import com.ukg.api_gateway.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

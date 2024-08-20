@@ -1,15 +1,12 @@
-package com.ukg.api_gateway.configuration;
-
-import com.ukg.api_gateway.exceptions.InvalidRequest;
-import com.ukg.api_gateway.exceptions.NoAuthorisationException;
-import com.ukg.api_gateway.exceptions.ResourceNotFoundException;
+package com.ukg.api_gateway.exceptions;
+import com.ukg.api_gateway.dtos.ErrorDetail;
+import com.ukg.api_gateway.dtos.ResponseDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;

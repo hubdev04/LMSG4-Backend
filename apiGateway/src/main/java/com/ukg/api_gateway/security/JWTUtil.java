@@ -1,5 +1,6 @@
-package com.ukg.api_gateway.helper;
+package com.ukg.api_gateway.security;
 
+import com.ukg.api_gateway.helper.Role;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -41,7 +42,6 @@ public class JWTUtil {
 
     public Object getRole(String token){
         Claims claims = extractAllClaims(token);
-//        System.out.println(claims.get("role").getClass());
         return claims.get("role");
     }
 
@@ -56,6 +56,7 @@ public class JWTUtil {
     }
 
     private boolean isTokenExpired(Claims claims) {
+        //TODO: remove date and add dateTime
         return claims.getExpiration().before(new Date());
     }
 }

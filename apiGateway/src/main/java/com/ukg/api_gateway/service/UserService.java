@@ -4,17 +4,12 @@ import com.ukg.api_gateway.dtos.UserLoginDTO;
 import com.ukg.api_gateway.entity.UserEntity;
 import com.ukg.api_gateway.exceptions.InvalidRequest;
 import com.ukg.api_gateway.exceptions.NoAuthorisationException;
-import com.ukg.api_gateway.helper.JWTUtil;
+import com.ukg.api_gateway.security.JWTUtil;
 import com.ukg.api_gateway.helper.Role;
 import com.ukg.api_gateway.respository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -25,9 +20,6 @@ public class UserService {
 
     @Autowired
     private JWTUtil jwtUtil;
-//
-//    @Autowired
-//    AuthenticationManager authenticationManager;
 
     public UserEntity findByEmailAndPassword(String email, String password) throws NoAuthorisationException {
         Optional<UserEntity> optionalUserEntity = userRepository.findByEmailAndPassword(email, password);
@@ -61,10 +53,7 @@ public class UserService {
         System.out.println("Role: " + jwtUtil.getRole(token));
 
         return token;
-//        return jwtUtil.generateToken(existingUser.getEmail(), existingUser.getRole());
-//        Authentication authentication = authenticationManager.authenticate(
-//                new UsernamePasswordAuthenticationToken()
-//        )
+
     }
     public Optional<UserEntity> findByEmail(String email) {
         return userRepository.findByEmail(email);

@@ -1,4 +1,4 @@
-package com.ukg.api_gateway.configuration;
+package com.ukg.api_gateway.helper;
 
 public enum CourseApprovalStatus {
     DENIED,

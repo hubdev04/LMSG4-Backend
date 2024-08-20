@@ -10,5 +10,4 @@ public class ApiGatewayApplication {
 		System.out.println("\n\n  api gateway running \n\n");
 		SpringApplication.run(ApiGatewayApplication.class, args);
 	}
-
 }

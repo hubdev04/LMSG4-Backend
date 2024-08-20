@@ -1,4 +1,4 @@
-package com.ukg.api_gateway.helper;
+package com.ukg.api_gateway.security;
 
 import com.ukg.api_gateway.entity.UserEntity;
 import com.ukg.api_gateway.respository.UserRepository;
@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
@@ -28,6 +27,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         System.out.println("\n-----------------------------\n--------------------------------");
         System.out.println(authorities);
+        //TODO: clean it up
         return new org.springframework.security.core.userdetails.User(
                 user.getEmail(),
                 user.getPassword(),

@@ -1,4 +1,4 @@
-package com.ukg.api_gateway.helper;
+package com.ukg.api_gateway.security;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -15,7 +15,6 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
-import java.util.Objects;
 
 @Component
 public class JWTAuthenticationFilter extends OncePerRequestFilter {
@@ -28,8 +27,6 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
 
     @Override
     public void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-//        System.out.println(request.getRequestURI());
-//        if(Objects.equals(request.getRequestURI(), "/api/auth/register"))return;
 
         System.out.println("\n\n------- FILTER ---------\n");
 
@@ -40,11 +37,11 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
             token = bearerToken.substring(7);
         }
 
-        if(StringUtils.hasText(token) && jwtUtil.validateToken(token)){
+        if(token!=null && jwtUtil.validateToken(token)){
             String email = jwtUtil.getEmail(token);
 
             UserDetails userDetails = userDetailsService.loadUserByUsername(email);
-
+            //TODO: remove the below code and check authority from the existing token (if possible).
             UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
             authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
             SecurityContextHolder.getContext().setAuthentication(authToken);
