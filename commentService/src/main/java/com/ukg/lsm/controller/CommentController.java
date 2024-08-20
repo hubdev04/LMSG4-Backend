@@ -5,6 +5,8 @@ import com.ukg.lsm.dtos.CommentPostDto;
 import com.ukg.lsm.entity.Comment;
 import com.ukg.lsm.exception.ResourceNotFoundException;
 import com.ukg.lsm.service.CommentService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.ukg.lsm.exception.InvalidRequest;
@@ -15,6 +17,8 @@ import java.util.List;
 @RequestMapping("/comments")
 
 public class CommentController {
+    private static final Logger logger = LoggerFactory.getLogger(CommentController.class);
+
     private final CommentService commentService;
 
     @Autowired
@@ -24,7 +28,8 @@ public class CommentController {
 
     @PostMapping
     public ResponseDTO saveComments(@RequestBody List<CommentPostDto> listCommentPostDto) throws InvalidRequest {
-        System.out.println("inside post controller of comments");
+
+        logger.info("Received request to save {} comments", listCommentPostDto.size());
 
             return ResponseDTO.builder()
                     .success(true)
@@ -36,20 +41,11 @@ public class CommentController {
     }
 
 
-//    @PostMapping
-//    public ResponseDTO saveComments(@RequestBody List<CommentPostDto> listCommentPostDto) {
-//        System.out.println("inseide post controller of comments");
-//        return ResponseDTO.builder()
-//                .success(true)
-//                .errorDetails(null)
-//                .message("Comments saved successfully")
-//                .result(commentService.postComments(listCommentPostDto))
-//                .completionTimeStamp(LocalDateTime.now())
-//                .build();
-//    }
+
     @GetMapping
     public ResponseDTO getAllComments() throws ResourceNotFoundException {
-        System.out.println("\n\n inside get comments controller\n\n");
+        logger.info("Received request to fetch all active and non-deleted comments");
+
         return ResponseDTO.builder()
                 .success(true)
                 .message("Comments fetched successfully")
@@ -62,10 +58,11 @@ public class CommentController {
     public ResponseDTO getCommentsByCourseAndUser(
             @RequestParam (required = false) Long courseId,
             @RequestParam(required = false) Long userId) throws ResourceNotFoundException {
-        System.out.println("courseId----" + courseId + "\n");
-        System.out.println("userId------" + userId + "\n");
-        //System.out.println("\n\n   insisde course user api \n\n");
+        logger.info("Received request to fetch comments for courseId: {} and userId: {}", courseId, userId);
+
         List<Comment> comments = commentService.findCommentsByCourseIdAndUserId(courseId, userId);
+        logger.info("Successfully fetched {} comments for courseId: {} and userId: {}", comments.size(), courseId, userId);
+
 
         return ResponseDTO.builder()
                 .success(true)
