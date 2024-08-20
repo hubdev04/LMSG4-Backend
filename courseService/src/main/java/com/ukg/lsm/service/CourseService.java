@@ -23,7 +23,7 @@ public class CourseService {
     private CourseRepository courseRepository;
 
     public List<CourseEntity> findAllActiveAndApprovedCourses() throws ResourceNotFoundException{
-        Optional<List<CourseEntity>> optionalResponse = courseRepository.findByIsActiveTrueAndIsDeletedFalseAndApprovalStatus(CourseApprovalStatus.PENDING);
+        Optional<List<CourseEntity>> optionalResponse = courseRepository.findByIsActiveTrueAndIsDeletedFalse();
         if(optionalResponse.isEmpty()){
             throw new ResourceNotFoundException("No courses found");
         }
