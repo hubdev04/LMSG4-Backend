@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="965873c7-054c-4e77-9d8f-26d8d5763196" name="Changes" comment="merge">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apiGateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/apiGateway/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +70,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "ramansh",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/ramansh.goyal/ukg/RewardsAndRecognition"
+    "last_opened_file_path": "C:/Users/ramansh.goyal/ukg/LMSG4-Backend/authService"
   }
 }]]></component>
   <component name="RecentsManager">

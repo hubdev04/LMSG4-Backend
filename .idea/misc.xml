@@ -10,6 +10,7 @@
         <option value="$PROJECT_DIR$/commentService/pom.xml" />
         <option value="$PROJECT_DIR$/apiGateway/pom.xml" />
         <option value="$PROJECT_DIR$/registry/pom.xml" />
+        <option value="$PROJECT_DIR$/authService/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

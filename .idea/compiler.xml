@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="api-gateway" />
         <module name="registry" />
+        <module name="auth-service" />
         <module name="lsm (1)" />
         <module name="lsm" />
       </profile>
@@ -22,6 +23,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="LMS" options="-parameters" />
       <module name="api-gateway" options="-parameters" />
+      <module name="auth-service" options="-parameters" />
       <module name="lsm" options="-parameters" />
       <module name="lsm (1)" options="-parameters" />
       <module name="lsm (2)" options="-parameters" />
