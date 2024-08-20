@@ -16,6 +16,7 @@ target/
 ### IntelliJ IDEA ###
 .idea
 *.idea
+apiGateway/.idea
 adminService/.idea
 mentorService/.idea
 commentService/.idea

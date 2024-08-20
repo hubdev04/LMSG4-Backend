@@ -1,4 +1,5 @@
 package com.ukg.lsm.service;
+import com.ukg.lsm.dtos.CoursePostDto;
 import com.ukg.lsm.dtos.CourseUserPostDto;
 import com.ukg.lsm.entity.CourseEntity;
 import com.ukg.lsm.entity.CourseUserEntity;
@@ -41,6 +42,9 @@ public class CourseUserService {
 
     }
     public List<CourseUserEntity> saveCourseUser(List<CourseUserPostDto> dtos) throws Exception{
+        for(CourseUserPostDto dto: dtos){
+            courseService.findActiveAndApprovedCourseById(dto.getCourseId());
+        }
         return courseUserRepository.saveAll(
                 dtos.stream()
                         .map(this:: convertDtoToUser)

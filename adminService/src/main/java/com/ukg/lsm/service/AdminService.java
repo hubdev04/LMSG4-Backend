@@ -7,7 +7,9 @@ import com.ukg.lsm.exception.ResourceNotFoundException;
 import java.util.List;
 
 public interface AdminService {
+
     List<AdminEntity> getAdmins() throws ResourceNotFoundException;
+
     AdminEntity createAdmin(AdminEntity admin) throws InvalidRequest;
 
 }

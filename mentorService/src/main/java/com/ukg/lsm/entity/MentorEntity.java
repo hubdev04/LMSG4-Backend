@@ -19,8 +19,6 @@ import lombok.NoArgsConstructor;
         private String mentorEmail;
         private String mentorPhone;
 
-        //unique
-        @Column
-        private String password;
+
 
     }

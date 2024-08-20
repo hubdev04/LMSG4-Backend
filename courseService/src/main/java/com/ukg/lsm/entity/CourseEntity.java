@@ -22,6 +22,7 @@ public class CourseEntity {
     private String title;
     @Column(nullable = false)
     private String category;
+    private String description;
     private Long createdBy;
     private Long duration;
     @Enumerated(EnumType.STRING)
