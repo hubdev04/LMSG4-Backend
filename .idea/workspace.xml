@@ -5,20 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="965873c7-054c-4e77-9d8f-26d8d5763196" name="Changes" comment="merge">
-      <change afterPath="$PROJECT_DIR$/courseService/src/main/java/com/ukg/lsm/configuration/CorsConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiGateway/src/main/java/com/ukg/api_gateway/ApiGatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiGateway/src/main/java/com/ukg/api_gateway/ApiGatewayApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiGateway/src/main/java/com/ukg/api_gateway/configuration/ApplicationExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiGateway/src/main/java/com/ukg/api_gateway/exceptions/ApplicationExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiGateway/src/main/java/com/ukg/api_gateway/configuration/CourseApprovalStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiGateway/src/main/java/com/ukg/api_gateway/helper/CourseApprovalStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiGateway/src/main/java/com/ukg/api_gateway/configuration/ErrorDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiGateway/src/main/java/com/ukg/api_gateway/dtos/ErrorDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiGateway/src/main/java/com/ukg/api_gateway/configuration/ResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiGateway/src/main/java/com/ukg/api_gateway/dtos/ResponseDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiGateway/src/main/java/com/ukg/api_gateway/configuration/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiGateway/src/main/java/com/ukg/api_gateway/configuration/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiGateway/src/main/java/com/ukg/api_gateway/controller/UserController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiGateway/src/main/java/com/ukg/api_gateway/helper/CustomUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiGateway/src/main/java/com/ukg/api_gateway/security/CustomUserDetailsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiGateway/src/main/java/com/ukg/api_gateway/helper/JWTAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiGateway/src/main/java/com/ukg/api_gateway/security/JWTAuthenticationFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiGateway/src/main/java/com/ukg/api_gateway/helper/JWTEntryPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiGateway/src/main/java/com/ukg/api_gateway/security/JWTEntryPoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiGateway/src/main/java/com/ukg/api_gateway/helper/JWTUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiGateway/src/main/java/com/ukg/api_gateway/security/JWTUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiGateway/src/main/java/com/ukg/api_gateway/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiGateway/src/main/java/com/ukg/api_gateway/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/courseService/src/main/java/com/ukg/lsm/configuration/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/courseService/src/main/java/com/ukg/lsm/configuration/CorsConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/courseService/src/main/java/com/ukg/lsm/entity/CourseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/courseService/src/main/java/com/ukg/lsm/entity/CourseEntity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

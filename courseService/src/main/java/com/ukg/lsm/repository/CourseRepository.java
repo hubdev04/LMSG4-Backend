@@ -8,7 +8,7 @@ import java.util.Optional;
 
 @Repository
 public interface CourseRepository extends JpaRepository<CourseEntity,Long> {
-   Optional<List<CourseEntity>> findByIsActiveTrueAndIsDeletedFalseAndApprovalStatus(CourseApprovalStatus CourseApprovalStatus);
+   Optional<List<CourseEntity>> findByIsActiveTrueAndIsDeletedFalse();
     Optional<CourseEntity> findByIdAndIsActiveTrueAndIsDeletedFalseAndApprovalStatus(Long id, CourseApprovalStatus approvalStatus);
     Optional<List<CourseEntity>> findByApprovalStatusAndIsDeletedFalseAndIsActiveTrue(CourseApprovalStatus approvalStatus);
     Optional<CourseEntity> findById(Long courseId);
