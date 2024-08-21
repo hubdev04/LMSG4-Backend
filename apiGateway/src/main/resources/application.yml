@@ -10,6 +10,8 @@ spring:
           uri: lb://COURSE-SERVICE
           predicates:
             - Path=/courses/**
+          filters:
+            - AuthenticationFilter
 
         - id: AUTH-SERVICE
           uri: lb://AUTH-SERVICE
