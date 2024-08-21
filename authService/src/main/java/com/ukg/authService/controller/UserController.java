@@ -4,13 +4,11 @@ import com.ukg.authService.dtos.UserLoginDTO;
 import com.ukg.authService.entity.UserEntity;
 import com.ukg.authService.exceptions.InvalidRequest;
 import com.ukg.authService.exceptions.NoAuthorisationException;
+import com.ukg.authService.helper.JWTUtil;
 import com.ukg.authService.service.UserService;
 import com.ukg.authService.configuration.ResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 
@@ -20,6 +18,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private JWTUtil jwtUtil;
 
     @PostMapping("/register")
     public ResponseDTO registerUser(@RequestBody UserEntity user) throws InvalidRequest {
@@ -42,5 +43,9 @@ public class UserController {
                 .result(userService.loginUser(user))
                 .completionTimeStamp(LocalDateTime.now())
                 .build();
+    }
+
+    @GetMapping("/validateToken")
+    public void validateToken(){
     }
 }
