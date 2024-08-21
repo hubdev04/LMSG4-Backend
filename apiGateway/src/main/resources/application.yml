@@ -5,11 +5,25 @@ spring:
     name: API-GATEWAY
   cloud:
     gateway:
+      globalcors:
+        cors-configuration:
+          '[/**]':
+            allowedOrigins: "http://localhost:4200"
+            allowedMethods:
+              -GET
+              -POST
+              -PUT
+              -DELETE
+              -OPTIONS
+            allowedHeaders: "*"
+#            allowCredentials: true
       routes:
         - id: COURSE-SERVICE
           uri: lb://COURSE-SERVICE
           predicates:
             - Path=/courses/**
+          filters:
+            - AuthenticationFilter
 
         - id: AUTH-SERVICE
           uri: lb://AUTH-SERVICE
