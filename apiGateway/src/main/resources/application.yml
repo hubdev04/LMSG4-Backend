@@ -18,6 +18,11 @@ spring:
           predicates:
             - Path=/api/auth/**
 
+        - id: COMMENT-SERVICE
+          uri: lb://COMMENT-SERVICE
+          predicates:
+            - Path=/comments/**
+
   eureka:
     client:
       service-url:
