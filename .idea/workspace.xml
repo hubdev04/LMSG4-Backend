@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="965873c7-054c-4e77-9d8f-26d8d5763196" name="Changes" comment="merge">
-      <change afterPath="$PROJECT_DIR$/courseService/src/main/java/com/ukg/lsm/controller/CourseMentorController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiGateway/src/main/java/com/lms/apiGateway/ApiGatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiGateway/src/main/java/com/lms/apiGateway/ApiGatewayApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/courseService/src/main/java/com/ukg/lsm/controller/CourseMentorService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/courseService/src/main/java/com/ukg/lsm/controller/CourseUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/courseService/src/main/java/com/ukg/lsm/controller/CourseUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/courseService/src/main/java/com/ukg/lsm/entity/CourseMentorEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/courseService/src/main/java/com/ukg/lsm/entity/CourseMentorEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/courseService/src/main/java/com/ukg/lsm/service/CourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/courseService/src/main/java/com/ukg/lsm/service/CourseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apiGateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/apiGateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apiGateway/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/authService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/authService/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/courseService/src/main/resources/application.yml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,19 +75,12 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "ramansh",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/ramansh.goyal/ukg/LMSG4-Backend/commentService/src/main"
+    "last_opened_file_path": "C:/Users/ramansh.goyal/ukg/LMSG4-Backend/authService"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\ramansh.goyal\ukg\LMSG4-Backend\commentService\src\main" />
       <recent name="C:\Users\ramansh.goyal\ukg\LMSG4-Backend\apiGateway\src\main\java\com\ukg\api_gateway" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.lms.apiGateway" />
-      <recent name="com.ukg.authService.configuration" />
-      <recent name="com.ukg.lsm" />
-      <recent name="" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -99,7 +90,7 @@
       <command value="mvn clean:clean" />
     </option>
   </component>
-  <component name="RunManager" selected="Application.course">
+  <component name="RunManager" selected="Application.RegisteryApplication">
     <configuration name="ApiGatewayApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.lms.apiGateway.ApiGatewayApplication" />
       <module name="api-gateway" />
@@ -170,8 +161,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.course" />
         <item itemvalue="Application.RegisteryApplication" />
+        <item itemvalue="Application.course" />
         <item itemvalue="Application.AuthService" />
         <item itemvalue="Application.ApiGatewayApplication" />
       </list>
@@ -216,25 +207,5 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="merge" />
     <option name="LAST_COMMIT_MESSAGE" value="merge" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/courseService/src/main/java/com/ukg/lsm/service/CourseMentorService.java</url>
-          <line>22</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/courseService/src/main/java/com/ukg/lsm/repository/CourseMentorRepository.java</url>
-          <line>10</line>
-          <properties class="com.ukg.lsm.repository.CourseMentorRepository" method="findByMentorId">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
