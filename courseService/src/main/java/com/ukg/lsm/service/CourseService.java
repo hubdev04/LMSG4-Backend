@@ -3,13 +3,14 @@ import com.ukg.lsm.configuration.CourseApprovalStatus;
 import com.ukg.lsm.dtos.CoursePostDto;
 import com.ukg.lsm.dtos.CourseStatusChangeDto;
 import com.ukg.lsm.entity.CourseEntity;
+import com.ukg.lsm.entity.CourseMentorEntity;
 import com.ukg.lsm.exceptions.InvalidRequest;
 import com.ukg.lsm.exceptions.ResourceNotFoundException;
+import com.ukg.lsm.repository.CourseMentorRepository;
 import com.ukg.lsm.repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,8 @@ import java.util.stream.Collectors;
 public class CourseService {
     @Autowired
     private CourseRepository courseRepository;
+    @Autowired
+    private CourseMentorRepository courseMentorRepository;
 
     public List<CourseEntity> findAllActiveAndApprovedCourses() throws ResourceNotFoundException{
         Optional<List<CourseEntity>> optionalResponse = courseRepository.findByIsActiveTrueAndIsDeletedFalse();
@@ -49,10 +52,18 @@ public class CourseService {
         return optionalCourseEntities.get();
     }
     public List<CourseEntity> postCourses(List<CoursePostDto> courses){
-        return courseRepository.saveAll(courses.stream()
+
+        List<CourseEntity>savedCourses =  courseRepository.saveAll(courses.stream()
                 .map(this::mapDtoToEntity)
                 .collect(Collectors.toList()));
 
+
+        courseMentorRepository.saveAll(savedCourses.stream()
+                .map(this::mapSecondDtoToEntity)
+                .collect(Collectors.toList())
+        );
+
+        return savedCourses;
     }
     public List<CourseEntity> saveStatusChange(List<CourseStatusChangeDto> courseStatusChangeDtos) throws ResourceNotFoundException, InvalidRequest {
         List<CourseEntity> coursesWhoseStatusNeedToBeChanged = new ArrayList<>();
@@ -97,6 +108,15 @@ public class CourseService {
                 .isActive(true)
                 .category(dto.getCategory())
                 .duration((long) dto.getDuration())
+                .build();
+    }
+    public CourseMentorEntity mapSecondDtoToEntity(CourseEntity dto){
+        return CourseMentorEntity.builder()
+                .courseId(dto.getId())
+                .mentorId(dto.getCreatedBy())
+                .createdDate(LocalDate.now())
+                .isDeleted(false)
+                .isActive(true)
                 .build();
     }
 }
