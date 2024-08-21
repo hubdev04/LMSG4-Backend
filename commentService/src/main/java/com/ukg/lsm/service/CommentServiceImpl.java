@@ -24,7 +24,7 @@ public class CommentServiceImpl implements CommentService {
 
     private final CommentRepository commentRepository;
     private final RestTemplate restTemplate;
-    private static final String COURSE_SERVICE_URL = "http://localhost:8081/courses/";
+    private static final String COURSE_SERVICE_URL = "http://localhost:8082/courses/";
 
     @Autowired
     public CommentServiceImpl(CommentRepository commentRepository, RestTemplate restTemplate) {
