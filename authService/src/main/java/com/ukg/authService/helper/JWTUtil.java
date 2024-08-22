@@ -14,6 +14,7 @@ import java.util.Map;
 public class JWTUtil {
 
     private final SecretKey secret = Jwts.SIG.HS256.key().build();
+//    private final String secret = "test";
 
     public String generateToken(String email, Role role, Long id){
         Map<String, Object> claims = new HashMap<>();
